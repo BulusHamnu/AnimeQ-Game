@@ -6,28 +6,29 @@ let questionIndex = 0
 let quize = animeQuestions[questionIndex]
 let score = 0;
 let isCorrect = false;
+let timer;
+const windowWidth = window.innerWidth
 
-displayQuestion()
+
 
 function displayQuestion() {
     isCorrect = false;
     let render = `
-            <div class="question-no">Question: ${questionIndex + 1 } of ${animeQuestions.length}</div>
             <h3 class="question">${quize.question}</h3>
             <div class="answer-box">
-                <label for="answer1">
+                <label for="answer1" class="indicator" data-qId="a">
                     <input type="radio" name=${questionIndex} value="a" class="selector">
                     ${quize.answers.a}
                 </label>
-                <label for="answer2">
+                <label for="answer2" class="indicator" data-qId="b">
                     <input type="radio" name=${questionIndex} value="b" class="selector">
                     ${quize.answers.b}
                 </label>
-                <label for="answer3">
+                <label for="answer3" class="indicator" data-qId="c">
                     <input type="radio" name=${questionIndex} value="c" class="selector">
                     ${quize.answers.c}
                 </label>
-                <label for="answer4">
+                <label for="answer4" class="indicator" data-qId="d">
                     <input type="radio" name=${questionIndex} value="d" class="selector">
                     ${quize.answers.d}
                 </label>
@@ -36,44 +37,109 @@ function displayQuestion() {
 
     `
 
-    questionContainer.innerHTML = render
+    questionContainer.innerHTML = render;
+    document.querySelector(".question-no").innerHTML = `Question: ${questionIndex + 1 } of ${animeQuestions.length}`
 
     document.querySelectorAll('.selector').forEach(selector => {
-        selector.addEventListener("click", function() {
+        
+            selector.addEventListener("click", function() {
+            clearInterval(timer);
             if (selector.checked) {
                 if (selector.value === animeQuestions[parseInt(selector.name)].correctAnswer) {
+
+                    document.querySelectorAll(".indicator").forEach(indicator => {
+                        
+                        if (indicator.dataset.qid === selector.value) {
+                            indicator.classList.add("highlight");
+                            
+                    } 
+                    
+                    
+                });
+                    
                     isCorrect = true;
+
+
                 } else {
                     isCorrect = false;
+
+                    document.querySelectorAll(".indicator").forEach(indicator => {
+                        
+                        if (indicator.dataset.qid === selector.value) {
+                            indicator.classList.add("wrong-answer");
+                            
+                    }
+                    if (indicator.dataset.qid === animeQuestions[parseInt(selector.name)].correctAnswer ) {
+                        indicator.classList.add("highlight");
+                        
+                } 
+                
+                
+                } )
+
                 }
             }
         })
     })
 
-    
+    let count = 0; 
+    timer = setInterval(() => {
+        count++;
+        
+        if (windowWidth <= 430) {
+            document.querySelector(".timer-indicator").style.width = `${(count / 20) * 21}rem`
+        } else {
+            document.querySelector(".timer-indicator").style.width = `${(count / 20) * 40}rem`
+        }
+
+        
+        if (count === 20) {
+            clearInterval(timer);
+            document.querySelectorAll('.indicator').forEach(indicator => {
+                if (indicator.dataset.qid === animeQuestions[questionIndex].correctAnswer) {
+                    indicator.classList.add("highlight");
+                }
+            })
+            
+            // document.querySelectorAll('.selector').forEach(selector => {
+            //     // selector.removeEventListener('click')
+            // })
+        }
+        
+    },1000)
 
 }
 
+
+document.querySelector(".start-game").addEventListener("click",function () {
+    displayQuestion()
+    document.querySelector(".next-question").style.display = "block"
+})
+
 document.querySelector(".next-question").addEventListener("click", function() {
+    
+    clearInterval(timer);
     questionIndex++;
+    timer = 0;
     if (questionIndex >= animeQuestions.length) {
         document.querySelector(".next-question").style.display = "none";
         document.querySelector(".restart-btn").style.display = "block";
-        questionContainer.innerHTML = `You finished the game, you total score is ${score}`;
+        questionContainer.innerHTML = `You finished the game, you total score is ${score} out of ${animeQuestions.length} questions`;
+        document.querySelector(".timer-indicator").style.width = "0rem"
     } else {
         if (isCorrect) {
             score++;
-            document.querySelector(".status").innerHTML = `Correct Answer!`
+            console.log(`Correct Answer! Score: ${score}`)
+            document.querySelector(".scores").style.display = `Score: ${score}`;
         } else {
             console.log(`Wrong Answer! Score: ${score}`)
-            document.querySelector(".status").innerHTML = `Wrong Answer!`
+            document.querySelector(".scores").style.display = `Score: ${score}`;
         }
         quize = animeQuestions[questionIndex];
         setTimeout(() => {
             displayQuestion()
-            document.querySelector(".status").innerHTML = ``;
             document.querySelector(".scores").innerHTML = `Score: ${score}`;
-        },500)
+        },600)
     }
 });
 
@@ -93,4 +159,12 @@ document.querySelector(".restart-btn").addEventListener("click", function() {
 
     displayQuestion()
 });
+
+function selectorEvent() {
+    
+}
+
+// Responsive Design: Make the design mobile-friendly. Add media queries to ensure it looks good on smaller screens.
+
+// Data Storage: Use local storage or session storag
 

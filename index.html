@@ -9,18 +9,24 @@
 <body>
     
     <main>
-        <section class="menu">
-            <h3 class="logo">AnimeQ</h3>
-            <div class="scores">Score: 0</div>
-        </section>
+        <div >
+            <section class="menu">
+                <h3 class="logo">AnimeQ</h3>
+                <div class="scores">Score: 0</div>
+            </section>
+            <div class="progress-bar">
+                <div class="timer-indicator"></div>
+            </div>
+        </div>
         <section class="question-container">
-            
+            <button class="start-game" >Start game</button>
         </section>
-        <div class="status"></div>
         <section class="btn-container">
+            
             <button class="restart-btn" >Restart Game</button>
             <button class="next-question">Next</button>
         </section>
+        <div class="question-no"></div>
     </main>
     <script src="index.js" type="module"></script>
 </body>
