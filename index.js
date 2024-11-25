@@ -42,45 +42,9 @@ function displayQuestion() {
 
     document.querySelectorAll('.selector').forEach(selector => {
         
-            selector.addEventListener("click", function() {
-            clearInterval(timer);
-            if (selector.checked) {
-                if (selector.value === animeQuestions[parseInt(selector.name)].correctAnswer) {
-
-                    document.querySelectorAll(".indicator").forEach(indicator => {
-                        
-                        if (indicator.dataset.qid === selector.value) {
-                            indicator.classList.add("highlight");
-                            
-                    } 
-                    
-                    
-                });
-                    
-                    isCorrect = true;
-
-
-                } else {
-                    isCorrect = false;
-
-                    document.querySelectorAll(".indicator").forEach(indicator => {
-                        
-                        if (indicator.dataset.qid === selector.value) {
-                            indicator.classList.add("wrong-answer");
-                            
-                    }
-                    if (indicator.dataset.qid === animeQuestions[parseInt(selector.name)].correctAnswer ) {
-                        indicator.classList.add("highlight");
-                        
-                } 
-                
-                
-                } )
-
-                }
-            }
-        })
+            selector.addEventListener("click", selectorEvent)
     })
+
 
     let count = 0; 
     timer = setInterval(() => {
@@ -101,9 +65,9 @@ function displayQuestion() {
                 }
             })
             
-            // document.querySelectorAll('.selector').forEach(selector => {
-            //     // selector.removeEventListener('click')
-            // })
+            document.querySelectorAll('.selector').forEach(selector => {
+                selector.removeEventListener('click',selectorEvent)
+            })
         }
         
     },1000)
@@ -160,11 +124,48 @@ document.querySelector(".restart-btn").addEventListener("click", function() {
     displayQuestion()
 });
 
-function selectorEvent() {
-    
+function selectorEvent(e) {
+    let selector = e.target;
+    clearInterval(timer);
+    if (selector.checked) {
+        if (selector.value === animeQuestions[parseInt(selector.name)].correctAnswer) {
+
+            document.querySelectorAll(".indicator").forEach(indicator => {
+                
+                if (indicator.dataset.qid === selector.value) {
+                    indicator.classList.add("highlight");
+                    
+            } 
+            
+            
+        });
+            
+            isCorrect = true;
+
+
+        } else {
+            isCorrect = false;
+
+            document.querySelectorAll(".indicator").forEach(indicator => {
+                
+                if (indicator.dataset.qid === selector.value) {
+                    indicator.classList.add("wrong-answer");
+                    
+            }
+            if (indicator.dataset.qid === animeQuestions[parseInt(selector.name)].correctAnswer ) {
+                indicator.classList.add("highlight");
+                
+        } 
+        
+        
+        } )
+
+        }
+    }
 }
 
-// Responsive Design: Make the design mobile-friendly. Add media queries to ensure it looks good on smaller screens.
+
+
 
 // Data Storage: Use local storage or session storag
 
