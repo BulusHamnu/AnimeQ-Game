@@ -47,14 +47,28 @@ main {
 .status {
     font-size: 21px;
 }
-.prev-question, .next-question {
+.next-question {
     width: 7rem;
     height: 2rem;
+    align-self: end;
+    margin-right: 2.5rem;
 }
 .btn-container {
     display: flex;
-    gap: 6rem;
+    flex-direction: column;
+    width: 40rem;
 }
-
+.restart-btn {
+    display: none;
+    width: 7rem;
+    height: 2rem;
+    align-self: center;
+}
+.question-no {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
 

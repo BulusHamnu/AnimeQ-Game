@@ -7,7 +7,8 @@ export const animeQuestions = [
             b: "Gol D. Roger",
             c: "Edward Newgate",
             d: "Shanks"
-        }
+        },
+        correctAnswer: "b"
     },
     {
         question: "What is the name of Goku's signature attack in Dragon Ball?",
@@ -16,7 +17,8 @@ export const animeQuestions = [
             b: "Destructo Disk",
             c: "Kamehameha",
             d: "Final Flash"
-        }
+        },
+        correctAnswer: "c"
     },
     {
         question: "In Naruto, what is the Sharingan?",
@@ -25,7 +27,8 @@ export const animeQuestions = [
             b: "A type of jutsu",
             c: "A dojutsu (eye technique)",
             d: "A clan symbol"
-        }
+        },
+        correctAnswer: "c"
     },
     {
         question: "What is the primary goal of the Survey Corps in Attack on Titan?",
@@ -34,7 +37,8 @@ export const animeQuestions = [
             b: "To explore the outside world",
             c: "To fight titans and reclaim territory",
             d: "To train soldiers"
-        }
+        },
+        correctAnswer: "c"
     },
     {
         question: "Who is the protagonist in Death Note?",
@@ -43,7 +47,8 @@ export const animeQuestions = [
             b: "L Lawliet",
             c: "Ryuk",
             d: "Misa Amane"
-        }
+        },
+        correctAnswer: "a"
     },
     {
         question: "What is Edward Elric's nickname in Fullmetal Alchemist?",
@@ -52,7 +57,8 @@ export const animeQuestions = [
             b: "The Fullmetal Alchemist",
             c: "The Steel Alchemist",
             d: "The State Alchemist"
-        }
+        },
+        correctAnswer: "b"
     },
     {
         question: "What is Ichigo's weapon in Bleach?",
@@ -61,7 +67,8 @@ export const animeQuestions = [
             b: "Bankai",
             c: "Quincy Bow",
             d: "Hollow Mask"
-        }
+        },
+        correctAnswer: "a"
     },
     {
         question: "In My Hero Academia, what is Deku's real name?",
@@ -70,7 +77,8 @@ export const animeQuestions = [
             b: "Todoroki Shoto",
             c: "Izuku Midoriya",
             d: "Tenya Iida"
-        }
+        },
+        correctAnswer: "c"
     },
     {
         question: "What is the main focus of the anime Haikyuu!!?",
@@ -79,7 +87,8 @@ export const animeQuestions = [
             b: "Volleyball",
             c: "Soccer",
             d: "Tennis"
-        }
+        },
+        correctAnswer: "b"
     },
     {
         question: "In Sword Art Online, what is Kirito's real name?",
@@ -88,7 +97,8 @@ export const animeQuestions = [
             b: "Kirigaya Suguha",
             c: "Asuna Yuuki",
             d: "Klein"
-        }
+        },
+        correctAnswer: "a"
     }
 ];
 
