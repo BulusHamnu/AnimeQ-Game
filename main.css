@@ -5,6 +5,7 @@
 * {
     padding: 0;
     margin: 0;
+    /* outline: 2px solid indigo; */
 }
 body {
     display: flex;
@@ -64,7 +65,7 @@ main {
 .next-question {
     display: none;
     width: 7rem;
-    height: 2rem;
+    height: 2.5rem;
     align-self: end;
     background-color: #69c7f3;
     color: white;
@@ -80,7 +81,7 @@ main {
 .restart-btn {
     display: none;
     width: 7rem;
-    height: 2rem;
+    height: 2.5rem;
     align-self: center;
     background-color: #69c7f3;
     color: white;
@@ -92,7 +93,7 @@ main {
 }
 .start-game {
     width: 7rem;
-    height: 2rem;
+    height: 2.5rem;
     align-self: center;
     background-color: #69c7f3;
     color: white;
@@ -138,7 +139,45 @@ main {
 
 /*--------------------Responsive View---------------------------*/
 
-@media(max-width:430px) {
+@media(max-width:768px) {
+    main {
+        height: 36rem;
+        width: 30rem;
+    }
+
+    .menu {
+        width: 30rem;
+    }
+    .btn-container {
+        width: 19rem;  
+    }
+    .logo {
+    margin-left: 0.8rem;
+}
+    .scores {
+    margin-right: 0.8rem;
+    font-size: 19px;    
+}
+    .question-no {
+        font-size:17px;
+    }
+    label {
+        width:22.5rem;
+    }
+    .answer-box {
+        align-self: center;
+    }
+    .timer-indicator {
+        width: 0rem;
+    }
+    .progress-bar {
+        height: 0.3rem;
+        width: 30rem;
+        
+    }
+}
+
+@media(max-width:576px) {
     body {
     display: flex;
     align-items: center;
@@ -163,6 +202,7 @@ main {
 }
     .question-no {
         font-size:17px;
+        margin-top: 3rem;
     }
     label {
         width:19rem;

@@ -52,7 +52,14 @@ function displayQuestion() {
         
         if (windowWidth <= 430) {
             document.querySelector(".timer-indicator").style.width = `${(count / 20) * 21}rem`
-        } else {
+
+        } else if (windowWidth <= 576) {
+            document.querySelector(".timer-indicator").style.width = `${(count / 20) * 21}rem`
+
+        } else if (windowWidth <= 768) {
+            document.querySelector(".timer-indicator").style.width = `${(count / 20) * 30}rem`
+
+        } else  {
             document.querySelector(".timer-indicator").style.width = `${(count / 20) * 40}rem`
         }
 
