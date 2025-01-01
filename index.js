@@ -92,6 +92,10 @@ document.querySelector(".next-question").addEventListener("click", function() {
     clearInterval(timer);
     questionIndex++;
     timer = 0;
+    if(questionIndex == animeQuestions.length - 1) {
+        document.querySelector(".next-question").textContent = "Done";
+    }
+
     if (questionIndex >= animeQuestions.length) {
         document.querySelector(".next-question").style.display = "none";
         document.querySelector(".restart-btn").style.display = "block";
@@ -100,10 +104,10 @@ document.querySelector(".next-question").addEventListener("click", function() {
     } else {
         if (isCorrect) {
             score++;
-            console.log(`Correct Answer! Score: ${score}`)
+            // console.log(`Correct Answer! Score: ${score}`)
             document.querySelector(".scores").style.display = `Score: ${score}`;
         } else {
-            console.log(`Wrong Answer! Score: ${score}`)
+            // console.log(`Wrong Answer! Score: ${score}`)
             document.querySelector(".scores").style.display = `Score: ${score}`;
         }
         quize = animeQuestions[questionIndex];
